@@ -1,7 +1,11 @@
 {
   "name": "cloudflare-speedtest-cli",
+  "version": "0.1.0",
   "module": "index.ts",
   "type": "module",
+  "bin": {
+    "cf-speedtest": "bin/cli"
+  },
   "private": true,
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -9,5 +13,8 @@
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@cloudflare/speedtest": "^1.4.1"
   }
 }
