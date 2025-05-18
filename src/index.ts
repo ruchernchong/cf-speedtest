@@ -1,40 +1,29 @@
-import { logLatency } from "./logger/latency.ts";
-import { connectionMetadata } from "./utils/connection-metadata.ts";
-import { getLatency } from "./utils/get-latency.ts";
-import { measureDownload } from "./utils/measure-download.ts";
-import { serverLocation } from "./utils/server-location.ts";
+import { logDownload } from "./logger/download";
+import { logLatency } from "./logger/latency";
+import { logPacketLoss } from "./logger/packet-loss";
+import { logServerLocation } from "./logger/server-location";
+import { logUpload } from "./logger/upload";
+import { measureDownload } from "./measurements/measure-download";
+import { measureLatency } from "./measurements/measure-latency";
+import { measureUpload } from "./measurements/measure-upload";
+import { connectionMetadata } from "./utils/connection-metadata";
+import { getCity } from "./utils/get-city";
 
 export const runCLI = async () => {
-  const [latency, location, metadata] = await Promise.all([
-    getLatency(),
-    serverLocation(),
+  const [latencyStats, metadata] = await Promise.all([
+    measureLatency(),
     connectionMetadata(),
   ]);
-  console.log(latency);
-  const { colo, ip, loc } = metadata;
-  const city = location[colo];
-  console.log(city);
 
-  const downloadSpeed = await measureDownload(100001000, 1);
-  console.log("100MB", downloadSpeed);
+  const { colo, ip } = metadata;
+  const city = await getCity(colo);
+  logServerLocation(city, ip);
+  logLatency(latencyStats);
+  logPacketLoss(latencyStats.packetLoss);
 
-  // const [, , cmd, ...args] = argv;
-  //
-  // if (cmd === "--version" || cmd === "-v") {
-  //   console.log(`v${version}`);
-  //   return;
-  // }
-  //
-  // if (cmd === "--help" || cmd === "-h") {
-  //   printHelp();
-  //   return;
-  // }
-  //
-  // if (cmd === "hello") {
-  //   await helloCommand(args);
-  //   return;
-  // }
+  const downloadStats = await measureDownload(100001000, 1);
+  logDownload(downloadStats);
 
-  // const speedTest = new SpeedTest();
-  // speedTest.onFinish = (results) => console.log(results.getSummary());
+  const uploadStats = await measureUpload(100001000, 1);
+  logUpload(uploadStats);
 };
