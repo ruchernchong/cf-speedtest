@@ -1,8 +1,7 @@
-import { logDownload } from "./logger/download";
+import { FILE_SIZE } from "@/constants";
 import { logLatency } from "./logger/latency";
 import { logPacketLoss } from "./logger/packet-loss";
 import { logServerLocation } from "./logger/server-location";
-import { logUpload } from "./logger/upload";
 import { measureDownload } from "./measurements/measure-download";
 import { measureLatency } from "./measurements/measure-latency";
 import { measureUpload } from "./measurements/measure-upload";
@@ -21,9 +20,5 @@ export const runCLI = async () => {
   logLatency(latencyStats);
   logPacketLoss(latencyStats.packetLoss);
 
-  const downloadStats = await measureDownload(100001000, 1);
-  logDownload(downloadStats);
-
-  const uploadStats = await measureUpload(100001000, 1);
-  logUpload(uploadStats);
+  await Promise.all([measureDownload(FILE_SIZE), measureUpload(FILE_SIZE)]);
 };

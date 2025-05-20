@@ -1,9 +1,10 @@
 import https from "node:https";
+import { CLOUDFLARE_SPEEDTEST_HOSTNAME } from "@/constants";
 
 export const download = (bytes: number): Promise<number> =>
   new Promise((resolve, reject) => {
     const options = {
-      hostname: "speed.cloudflare.com",
+      hostname: CLOUDFLARE_SPEEDTEST_HOSTNAME,
       path: `/__down?bytes=${bytes}`,
       method: "GET",
     };

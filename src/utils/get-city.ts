@@ -1,13 +1,14 @@
+import { CLOUDFLARE_SPEEDTEST_HOSTNAME } from "@/constants";
 import type { ServerLocation } from "@/types";
 
-export const getCity = async (iata: string) => {
-  const response = await fetch("https://speed.cloudflare.com/locations");
+export const getCity = async (iata: ServerLocation["iata"]) => {
+  const res = await fetch(`https://${CLOUDFLARE_SPEEDTEST_HOSTNAME}/locations`);
 
-  if (!response.ok) {
-    throw new Error(response.statusText);
+  if (!res.ok) {
+    throw new Error(res.statusText);
   }
 
-  const serverLocation = (await response.json()) as ServerLocation[];
+  const serverLocation = (await res.json()) as ServerLocation[];
 
   const matchedLocation = serverLocation.find(
     (location) => location.iata === iata,

@@ -1,22 +1,14 @@
 export namespace Stats {
-  export interface Upload {
-    min: number;
-    max: number;
+  interface Base {
     average: number;
-    measurements: number[];
   }
 
-  export interface Download {
-    min: number;
-    max: number;
-    average: number;
-    measurements: number[];
-  }
+  export interface Upload extends Base {}
+  export interface Download extends Base {}
 
-  export interface Latency {
+  export interface Latency extends Base {
     min: number;
     max: number;
-    average: number;
     jitter: number;
     packetLoss: number;
     measurements: number[];

@@ -1,3 +1,4 @@
+import { CLOUDFLARE_SPEEDTEST_HOSTNAME } from "@/constants";
 import type { Metadata } from "@/types";
 
 const parseToJson = <T = Record<string, string>>(text: string): T => {
@@ -15,9 +16,9 @@ const parseToJson = <T = Record<string, string>>(text: string): T => {
 };
 
 export const connectionMetadata = async (): Promise<Metadata> => {
-  const res = await fetch("https://speed.cloudflare.com/cdn-cgi/trace").then(
-    (res) => res.text(),
-  );
+  const res = await fetch(
+    `https://${CLOUDFLARE_SPEEDTEST_HOSTNAME}/cdn-cgi/trace`,
+  ).then((res) => res.text());
 
   return parseToJson<Metadata>(res);
 };
