@@ -6,7 +6,6 @@
   "bin": {
     "cf-speedtest": "bin/cli"
   },
-  "private": true,
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/bun": "latest"
