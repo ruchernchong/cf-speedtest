@@ -6,9 +6,6 @@
     "cf-speedtest-cli": "dist/bin/cli.js"
   },
   "files": [],
-  "exports": {
-    ".": "./dist/bin/cli.js"
-  },
   "scripts": {
     "build": "tsc"
   },

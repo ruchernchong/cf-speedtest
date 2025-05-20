@@ -1,5 +1,5 @@
-import { logUpload } from "@/logger/upload.ts";
-import { measureBandwidth } from "@/utils/measure-bandwidth.ts";
+import { logUpload } from "@/logger/upload";
+import { measureBandwidth } from "@/utils/measure-bandwidth";
 import { upload } from "@/utils/upload";
 
 export const measureUpload = async (bytes: number) => {
