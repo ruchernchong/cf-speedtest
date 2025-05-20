@@ -1,17 +1,11 @@
+import type { Stats } from "@/types";
 import { convertToMbps } from "@/utils/convert-to-mbps";
 import { download } from "@/utils/download";
-
-export interface DownloadStats {
-  min: number;
-  max: number;
-  average: number;
-  measurements: number[];
-}
 
 export const measureDownload = async (
   bytes: number,
   iterations: number,
-): Promise<DownloadStats> => {
+): Promise<Stats.Download> => {
   const measurements: number[] = [];
 
   for (let i = 0; i < iterations; i++) {

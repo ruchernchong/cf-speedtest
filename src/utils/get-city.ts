@@ -1,11 +1,4 @@
-export interface ServerLocation {
-  iata: string;
-  lat: number;
-  lon: number;
-  cca2: string;
-  region: string;
-  city: string;
-}
+import type { ServerLocation } from "@/types";
 
 export const getCity = async (iata: string) => {
   const response = await fetch("https://speed.cloudflare.com/locations");

@@ -1,13 +1,6 @@
-export interface LatencyStats {
-  min: number;
-  max: number;
-  average: number;
-  jitter: number;
-  packetLoss: number;
-  measurements: number[];
-}
+import type { Stats } from "@/types";
 
-export const measureLatency = async (runs = 20): Promise<LatencyStats> => {
+export const measureLatency = async (runs = 20): Promise<Stats.Latency> => {
   const url = "https://speed.cloudflare.com/cdn-cgi/trace";
   const measurements: number[] = [];
 

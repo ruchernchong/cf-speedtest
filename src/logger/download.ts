@@ -1,7 +1,7 @@
-import type { DownloadStats } from "@/measurements/measure-download.ts";
+import type { Stats } from "@/types";
 import chalk from "chalk";
 
-export const logDownload = ({ average }: DownloadStats): void => {
+export const logDownload = ({ average }: Stats.Download): void => {
   console.log(
     chalk.bold.yellow(
       "⬇️ Download:",
