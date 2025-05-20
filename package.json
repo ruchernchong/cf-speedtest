@@ -1,5 +1,5 @@
 {
-  "name": "cloudflare-speedtest-cli",
+  "name": "cf-speedtest-cli",
   "version": "0.1.0",
   "module": "src/index.ts",
   "type": "module",
