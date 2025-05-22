@@ -15,6 +15,7 @@
     "build": "tsup",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
+    "check": "biome check src/**",
     "release": "changeset publish"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "@vitest/coverage-v8": "3.1.4",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.4"
   }
 }
