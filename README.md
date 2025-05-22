@@ -49,6 +49,10 @@ npm run build
 node dist/bin.js
 ```
 
+## Why am I using TS to write this CLI instead of other language?
+
+Because I am intending to use [cloudflare/speedtest](https://github.com/cloudflare/speedtest) in the future once [issue #17](https://github.com/cloudflare/speedtest/issues/17) is resolved.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
