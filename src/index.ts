@@ -1,6 +1,5 @@
 import { FILE_SIZE } from "@/constants";
-import { logLatency } from "@/logger/latency";
-import { logServerLocation } from "@/logger/server-location";
+import { logLatency, logServerLocation } from "@/logger/logger";
 import { measureDownload } from "@/measurements/measure-download";
 import { measureLatency } from "@/measurements/measure-latency";
 import { measureUpload } from "@/measurements/measure-upload";

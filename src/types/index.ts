@@ -7,8 +7,6 @@ export namespace Stats {
   export interface Download extends Base {}
 
   export interface Latency extends Base {
-    min: number;
-    max: number;
     jitter: number;
     packetLoss: number;
     measurements: number[];

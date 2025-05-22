@@ -1,6 +1,6 @@
+import { logDownload } from "@/logger/logger";
 import type { Stats } from "@/types";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { logDownload } from "./download";
 
 vi.mock("chalk", () => ({
   default: {

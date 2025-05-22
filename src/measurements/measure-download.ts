@@ -1,6 +1,6 @@
 import https from "node:https";
 import { CLOUDFLARE_SPEEDTEST_HOSTNAME } from "@/constants";
-import { logDownload } from "@/logger/download";
+import { logDownload } from "@/logger/logger";
 import { measureTransfer } from "./measure-transfer";
 
 const download = (bytes: number): Promise<number> =>

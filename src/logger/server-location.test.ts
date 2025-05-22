@@ -1,6 +1,5 @@
-import chalk from "chalk";
+import { logServerLocation } from "@/logger/logger";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { logServerLocation } from "./server-location";
 
 vi.mock("chalk", () => ({
   default: {

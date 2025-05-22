@@ -16,8 +16,6 @@ export const measureLatency = async (runs = 20): Promise<Stats.Latency> => {
   }
 
   const latencies = measurements;
-  const min = Math.min(...latencies);
-  const max = Math.max(...latencies);
   const sum = latencies.reduce((acc, latency) => acc + latency, 0);
   const average = sum / latencies.length;
   const diffs = latencies
@@ -30,5 +28,5 @@ export const measureLatency = async (runs = 20): Promise<Stats.Latency> => {
   const lost = runs - measurements.length;
   const packetLoss = (lost / runs) * 100;
 
-  return { min, max, average, jitter, packetLoss, measurements: latencies };
+  return { average, jitter, packetLoss, measurements: latencies };
 };

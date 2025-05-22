@@ -1,7 +1,6 @@
+import { logUpload } from "@/logger/logger";
 import type { Stats } from "@/types";
-import chalk from "chalk";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { logUpload } from "./upload";
 
 vi.mock("chalk", () => ({
   default: {

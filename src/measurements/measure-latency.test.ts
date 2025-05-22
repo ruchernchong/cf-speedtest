@@ -17,8 +17,6 @@ it("returns correct latency stats for specified runs", async () => {
   const stats = await measureLatency(2);
 
   expect(stats).toEqual({
-    min: 10,
-    max: 10,
     average: 10,
     jitter: 0,
     packetLoss: 0,
