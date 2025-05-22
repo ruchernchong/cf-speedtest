@@ -14,7 +14,7 @@ npm install -g cf-speedtest-cli
 Or run without installation using npx:
 
 ```bash
-npx cf-speedtest-cli
+npx cf-speedtest
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ npx cf-speedtest-cli
 After installation, run:
 
 ```bash
-cf-speedtest-cli
+cf-speedtest
 ```
 
 ### Example Output
@@ -42,8 +42,8 @@ Public IP: 139.59.132.30
 ## Building from Source
 
 ```bash
-git clone https://github.com/ruchernchong/cloudflare-speedtest-cli.git
-cd cloudflare-speedtest-cli
+git clone https://github.com/ruchernchong/cloudflare-speedtest.git
+cd cloudflare-speedtest
 pnpm install
 pnpm run build
 node dist/index.js
