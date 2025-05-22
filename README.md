@@ -44,9 +44,9 @@ Public IP: 139.59.132.30
 ```bash
 git clone https://github.com/ruchernchong/cloudflare-speedtest-cli.git
 cd cloudflare-speedtest-cli
-npm install
-npm run build
-node dist/bin.js
+pnpm install
+pnpm run build
+node dist/index.js
 ```
 
 ## Why am I using TS to write this CLI instead of other language?
