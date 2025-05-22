@@ -14,7 +14,7 @@ export const measureTransfer = async <T extends Stats.Download | Stats.Upload>(
   bytes: number,
   logger: (stats: T) => void,
 ): Promise<T> => {
-  const stats = (await measureBandwidth(handler, bytes)) as T;
+  const stats: T = await measureBandwidth(handler, bytes);
   logger(stats);
   return stats;
 };
