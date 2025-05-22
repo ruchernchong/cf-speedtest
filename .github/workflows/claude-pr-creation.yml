@@ -7,6 +7,7 @@ on:
 permissions:
   contents: read
   id-token: write
+  pull-requests: write
 
 jobs:
   create-pr:
@@ -17,5 +18,5 @@ jobs:
         with:
           direct_prompt: |
             "${{ github.event.comment.body }}"
-          allowed_tools: Bash(git status),Bash(git log),Bash(git show),Bash(git blame),Bash(git reflog),Bash(git stash list),Bash(git ls-files),Bash(git branch),Bash(git tag),Bash(git diff),View,GlobTool,GrepTool,BatchTool
+          allowed_tools: "mcp__github__add_pull_request_review_comment"
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
