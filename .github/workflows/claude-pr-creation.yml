@@ -1,7 +1,11 @@
 name: Claude PR Creation
+
 on:
   issue_comment:
     types: [created]
+
+permissions:
+  id-token: write
 
 jobs:
   create-pr:
