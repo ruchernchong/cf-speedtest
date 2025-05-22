@@ -2,16 +2,29 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Installation
+
+```bash
+# Install globally from npm
+npm install -g cf-speedtest-cli
+
+# Or install globally using bun
+bun install -g cf-speedtest-cli
+
+# Or run directly with npx
+npx cf-speedtest-cli
+```
+
 ## Building and Running
 
-### Using Bun
+### Development
 
 ```bash
 # Build the project
 bun run build
 
-# Run the speed test CLI
-bun run cli
+# Run the speed test CLI locally
+node dist/index.js
 ```
 
 ## Linting and Formatting
@@ -67,3 +80,4 @@ The project uses:
 - Biome for linting and formatting
 - Changesets for versioning and release management
 - Bun as the JavaScript runtime and package manager
+- tsup for bundling the TypeScript code
