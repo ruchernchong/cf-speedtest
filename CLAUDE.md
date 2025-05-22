@@ -2,17 +2,21 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Requirements
+
+- Node.js 18 or higher
+
 ## Installation
 
 ```bash
 # Install globally from npm
-npm install -g cf-speedtest-cli
+npm install -g cf-speedtest
 
 # Or install globally using pnpm
-pnpm add -g cf-speedtest-cli
+pnpm add -g cf-speedtest
 
 # Or run directly with npx
-npx cf-speedtest-cli
+npx cf-speedtest
 ```
 
 ## Building and Running
