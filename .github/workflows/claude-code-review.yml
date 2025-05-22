@@ -5,6 +5,7 @@ on:
     types: [opened, synchronize]
 
 permissions:
+  contents: read
   id-token: write
 
 jobs:
