@@ -1,5 +1,11 @@
 # cf-speedtest
 
+## 0.2.2
+
+### Patch Changes
+
+- [#13](https://github.com/ruchernchong/cf-speedtest/pull/13) [`b21e664`](https://github.com/ruchernchong/cf-speedtest/commit/b21e664a094557ecb071ef29f8d184443518d485) Thanks [@ruchernchong](https://github.com/ruchernchong)! - Improve performance
+
 ## 0.2.1
 
 ### Patch Changes
