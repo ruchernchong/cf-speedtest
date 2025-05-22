@@ -12,7 +12,9 @@
     "cf-speedtest-cli": "dist/index.js"
   },
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "chalk": "^5.3.0"
@@ -20,7 +22,9 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.29.4",
+    "@vitest/coverage-v8": "3.1.4",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
   }
 }
