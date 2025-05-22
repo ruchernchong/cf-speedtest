@@ -4,14 +4,12 @@
   "type": "module",
   "module": "src/index.ts",
   "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "exports": {
     ".": "./dist/index.js"
   },
   "bin": {
-    "cf-speedtest": "dist/index.js"
+    "cf-speedtest": "dist/cli.js"
   },
   "scripts": {
     "build": "tsup",

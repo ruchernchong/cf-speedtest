@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { FILE_SIZE } from "@/constants";
 import { logLatency } from "./logger/latency";
 import { logPacketLoss } from "./logger/packet-loss";
@@ -23,5 +22,3 @@ export const runCLI = async () => {
 
   await Promise.all([measureDownload(FILE_SIZE), measureUpload(FILE_SIZE)]);
 };
-
-runCLI();
