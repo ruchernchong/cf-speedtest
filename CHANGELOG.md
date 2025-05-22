@@ -1,5 +1,11 @@
 # cf-speedtest
 
+## 0.2.3
+
+### Patch Changes
+
+- [#16](https://github.com/ruchernchong/cf-speedtest/pull/16) [`de38b06`](https://github.com/ruchernchong/cf-speedtest/commit/de38b06a71c913d742f18892395eede32f576d74) Thanks [@ruchernchong](https://github.com/ruchernchong)! - Add minimum node version for this script to run
+
 ## 0.2.2
 
 ### Patch Changes
