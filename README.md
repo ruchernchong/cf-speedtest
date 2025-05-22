@@ -3,6 +3,10 @@
 A simple CLI tool to measure your Cloudflare network performance, including latency, packet loss, download, and upload
 speeds.
 
+## Requirements
+
+- Node.js 18 or higher
+
 ## Installation
 
 Install globally via npm:
