@@ -3,6 +3,10 @@
   "version": "0.1.1",
   "type": "module",
   "module": "src/index.ts",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "bin": {
     "cf-speedtest-cli": "dist/index.js"
   },
