@@ -1,4 +1,4 @@
-# cf-speedtest-cli
+# cf-speedtest
 
 A simple CLI tool to measure your Cloudflare network performance, including latency, packet loss, download, and upload
 speeds.
@@ -8,7 +8,7 @@ speeds.
 Install globally via npm:
 
 ```bash
-npm install -g cf-speedtest-cli
+npm install -g cf-speedtest
 ```
 
 Or run without installation using npx:
