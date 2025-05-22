@@ -22,3 +22,5 @@ export const runCLI = async () => {
 
   await Promise.all([measureDownload(FILE_SIZE), measureUpload(FILE_SIZE)]);
 };
+
+runCLI();

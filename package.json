@@ -1,9 +1,10 @@
 {
   "name": "cf-speedtest-cli",
   "version": "0.1.0",
+  "type": "module",
   "module": "src/index.ts",
   "bin": {
-    "cf-speedtest-cli": "dist/bin/cli.js"
+    "cf-speedtest-cli": "dist/index.js"
   },
   "files": [],
   "scripts": {
