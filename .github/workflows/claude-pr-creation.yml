@@ -1,0 +1,22 @@
+name: Claude PR Creation
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+jobs:
+  create-pr:
+    if: contains(github.event.comment.body, '@claude')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@beta
+        with:
+          direct_prompt: |
+            "${{ github.event.comment.body }}"
+          allowed_tools: "mcp__github__add_pull_request_review_comment"
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}

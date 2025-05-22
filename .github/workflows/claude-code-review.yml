@@ -1,0 +1,28 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Code Review with Claude
+        id: code-review
+        uses: anthropics/claude-code-action@beta
+        with:
+          direct_prompt: |
+            Review the PR changes. Focus on code quality, potential bugs, and performance issues. Suggest improvements where appropriate.
+          allowed_tools: "mcp__github__add_pull_request_review_comment"
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
