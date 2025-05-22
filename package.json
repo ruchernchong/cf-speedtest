@@ -1,5 +1,5 @@
 {
-  "name": "cf-speedtest-cli",
+  "name": "cf-speedtest",
   "version": "0.1.3",
   "type": "module",
   "module": "src/index.ts",
@@ -9,7 +9,7 @@
     ".": "./dist/index.js"
   },
   "bin": {
-    "cf-speedtest-cli": "dist/index.js"
+    "cf-speedtest": "dist/index.js"
   },
   "scripts": {
     "build": "tsup",
