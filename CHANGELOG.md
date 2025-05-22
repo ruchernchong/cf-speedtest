@@ -1,5 +1,11 @@
 # cf-speedtest
 
+## 0.2.1
+
+### Patch Changes
+
+- [#9](https://github.com/ruchernchong/cf-speedtest/pull/9) [`2b47d0d`](https://github.com/ruchernchong/cf-speedtest/commit/2b47d0d71bb350d38f05c7c9b0fdfba7c2a7f374) Thanks [@ruchernchong](https://github.com/ruchernchong)! - Separate executable from code
+
 ## 0.2.0
 
 ### Minor Changes
