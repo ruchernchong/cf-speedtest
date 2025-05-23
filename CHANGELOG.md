@@ -1,5 +1,11 @@
 # cf-speedtest
 
+## 0.2.4
+
+### Patch Changes
+
+- [#21](https://github.com/ruchernchong/cf-speedtest/pull/21) [`ec29d45`](https://github.com/ruchernchong/cf-speedtest/commit/ec29d454ccdf4d6111df3907adb5393a54498f42) Thanks [@ruchernchong](https://github.com/ruchernchong)! - Add metadata to `package.json`
+
 ## 0.2.3
 
 ### Patch Changes
