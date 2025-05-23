@@ -1,12 +1,32 @@
 {
   "name": "cf-speedtest",
   "version": "0.2.3",
+  "description": "CLI tool for testing internet speed using Cloudflare's network",
+  "keywords": [
+    "speedtest",
+    "cloudflare",
+    "cli",
+    "network",
+    "bandwidth",
+    "latency",
+    "internet-speed",
+    "performance",
+    "testing"
+  ],
+  "author": "Ru Chern Chong <hello@ruchern.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruchernchong/cf-speedtest.git"
+  },
+  "homepage": "https://github.com/ruchernchong/cf-speedtest#readme",
+  "bugs": {
+    "url": "https://github.com/ruchernchong/cf-speedtest/issues"
+  },
   "type": "module",
   "module": "src/index.ts",
   "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "exports": {
     ".": "./dist/index.js"
   },
