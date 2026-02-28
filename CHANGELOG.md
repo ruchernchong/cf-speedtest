@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/ruchernchong/cf-speedtest/compare/v1.0.0...v1.0.1) (2026-02-28)
+
+
+### Bug Fixes
+
+* suppress transferSize errors from @cloudflare/speedtest in Node.js ([3e67222](https://github.com/ruchernchong/cf-speedtest/commit/3e67222c2acfa9aafa9f93a58df84a1f8d6a60e8))
+
 # [1.0.0](https://github.com/ruchernchong/cf-speedtest/compare/v0.2.4...v1.0.0) (2026-02-28)
 
 
