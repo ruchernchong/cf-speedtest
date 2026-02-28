@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/ruchernchong/cf-speedtest/compare/v1.0.2...v1.0.3) (2026-02-28)
+
+
+### Bug Fixes
+
+* **docker:** run containers as non-root user ([ad0472b](https://github.com/ruchernchong/cf-speedtest/commit/ad0472be3f6d5527cd409d9f6c5b4ee390b8145e))
+
 ## [1.0.2](https://github.com/ruchernchong/cf-speedtest/compare/v1.0.1...v1.0.2) (2026-02-28)
 
 
