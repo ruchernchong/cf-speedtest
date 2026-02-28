@@ -1,5 +1,5 @@
 diff --git a/dist/speedtest.js b/dist/speedtest.js
-index 57aa7436ce06a17994647b0a2faded04cd431d41..ca604fa8b1f5c642afb336551533d3b682e8c23c 100644
+index 57aa7436ce06a17994647b0a2faded04cd431d41..737921cca1ae3f55227415999fa2d4adfef17edd 100644
 --- a/dist/speedtest.js
 +++ b/dist/speedtest.js
 @@ -1,4 +1,3 @@
@@ -7,3 +7,22 @@ index 57aa7436ce06a17994647b0a2faded04cd431d41..ca604fa8b1f5c642afb336551533d3b6
  import memoize from 'lodash.memoize';
  import { scaleThreshold } from 'd3-scale';
  
+@@ -713,6 +712,7 @@ function _nextMeasurement() {
+       return;
+     }
+     var perf = performance.getEntriesByName(url).slice(-1)[0]; // get latest perf timing
++    if (!perf) throw new Error('No performance entry found for ' + url);
+     var timing = {
+       transferSize: perf.transferSize,
+       ttfb: getTtfb(perf),
+@@ -747,7 +747,9 @@ function _nextMeasurement() {
+   })["catch"](function (error) {
+     var _this$retries, _this$retries2;
+     if (curPromise._cancel) return;
+-    console.warn("Error fetching ".concat(url, ": ").concat(error));
++    if (!error || !String(error).includes('No performance entry found')) {
++      console.warn("Error fetching ".concat(url, ": ").concat(error));
++    }
+     if ((_classPrivateFieldSet2(_retries, _this3, (_this$retries = _classPrivateFieldGet2(_retries, _this3), _this$retries2 = _this$retries++, _this$retries)), _this$retries2) < MAX_RETRIES) {
+       _assertClassBrand(_BandwidthMeasurementEngine_brand, _this3, _nextMeasurement).call(_this3); // keep trying
+     } else {
