@@ -1,5 +1,5 @@
-import { logDownload } from "@/logger/logger";
 import { afterEach, expect, it, vi } from "vitest";
+import { logDownload } from "@/logger/logger";
 import { measureDownload } from "./measure-download";
 import * as measureTransferModule from "./measure-transfer";
 

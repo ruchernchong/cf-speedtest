@@ -1,5 +1,5 @@
-import type { Stats } from "@/types";
 import chalk from "chalk";
+import type { Stats } from "@/types";
 
 export const logServerLocation = (city: string, ip: string): void => {
   console.log(chalk.bold.green("🌐 Server Location:"));

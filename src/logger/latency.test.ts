@@ -1,6 +1,6 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { logLatency } from "@/logger/logger";
 import type { Stats } from "@/types";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("chalk", () => ({
   default: {

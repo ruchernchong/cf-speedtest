@@ -1,4 +1,4 @@
-import { afterEach, expect, it, vi } from "vitest";
+import { expect, it, vi } from "vitest";
 import { connectionMetadata } from "./connection-metadata";
 
 it("parses key=value lines into an object", async () => {
