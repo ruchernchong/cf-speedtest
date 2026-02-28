@@ -1,21 +1,36 @@
-import { FILE_SIZE } from "@/constants";
-import { logLatency, logServerLocation } from "@/logger/logger";
-import { measureDownload } from "@/measurements/measure-download";
-import { measureLatency } from "@/measurements/measure-latency";
-import { measureUpload } from "@/measurements/measure-upload";
-import { connectionMetadata } from "@/utils/connection-metadata";
-import { getCity } from "@/utils/get-city";
+import SpeedTest from "@cloudflare/speedtest";
+import { logResults } from "@/logger/logger";
 
-export const runCLI = async () => {
-  const [latencyStats, metadata] = await Promise.all([
-    measureLatency(),
-    connectionMetadata(),
-  ]);
+export const runCLI = (): Promise<void> =>
+  new Promise((resolve) => {
+    let settled = false;
 
-  const { colo, ip } = metadata;
-  const city = await getCity(colo);
-  logServerLocation(city, ip);
-  logLatency(latencyStats);
+    const speedTest = new SpeedTest({
+      measurements: [
+        { type: "latency", numPackets: 1 },
+        { type: "download", bytes: 1e5, count: 1, bypassMinDuration: true },
+        { type: "latency", numPackets: 20 },
+        { type: "download", bytes: 1e5, count: 9 },
+        { type: "download", bytes: 1e6, count: 8 },
+        { type: "upload", bytes: 1e5, count: 8 },
+        { type: "upload", bytes: 1e6, count: 6 },
+        { type: "download", bytes: 1e7, count: 6 },
+        { type: "upload", bytes: 1e7, count: 4 },
+        { type: "download", bytes: 2.5e7, count: 4 },
+        { type: "upload", bytes: 2.5e7, count: 4 },
+        { type: "download", bytes: 1e8, count: 3 },
+        { type: "upload", bytes: 5e7, count: 3 },
+        { type: "download", bytes: 2.5e8, count: 2 },
+      ],
+    });
 
-  await Promise.all([measureDownload(FILE_SIZE), measureUpload(FILE_SIZE)]);
-};
+    const finish = (results: import("@cloudflare/speedtest").Results) => {
+      if (settled) return;
+      settled = true;
+      logResults(results);
+      resolve();
+    };
+
+    speedTest.onFinish = (results) => finish(results);
+    speedTest.onError = () => finish(speedTest.results);
+  });

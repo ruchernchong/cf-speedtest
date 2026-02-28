@@ -1,36 +1,36 @@
+import type { Results } from "@cloudflare/speedtest";
 import chalk from "chalk";
-import type { Stats } from "@/types";
 
-export const logServerLocation = (city: string, ip: string): void => {
-  console.log(chalk.bold.green("🌐 Server Location:"));
-  console.log(`${chalk.blue("City     :")} ${chalk.green(city)}`);
-  console.log(`${chalk.blue("Public IP:")} ${chalk.green(ip)}`);
-};
+const toMbps = (bps: number) => (bps / 1_000_000).toFixed(2);
 
-export const logLatency = (stats: Stats.Latency): void => {
-  const { average, packetLoss } = stats;
+export const logLatency = (ms: number): void => {
   console.log(
     chalk.bold.cyan("🏓 Latency:"),
-    `${chalk.green(`${average.toFixed(2)}ms`)}`,
-  );
-  console.log(
-    chalk.bold.red("🚫 Packet Loss:"),
-    `${chalk.red(`${packetLoss.toFixed(2)}%`)}`,
+    chalk.green(`${ms.toFixed(2)}ms`),
   );
 };
 
-export const logDownload = ({ average }: Stats.Download) => {
+export const logPacketLoss = (ratio: number | undefined): void => {
+  const display = ratio !== undefined ? `${(ratio * 100).toFixed(2)}%` : "N/A";
+  console.log(chalk.bold.red("🚫 Packet Loss:"), chalk.red(display));
+};
+
+export const logDownload = (bps: number): void => {
   console.log(
-    chalk.bold.yellow(
-      "⬇️ Download:",
-      `${chalk.green(average.toFixed(2), "Mbps")}`,
-    ),
+    chalk.bold.yellow(`⬇️ Download: ${chalk.green(`${toMbps(bps)} Mbps`)}`),
   );
 };
 
-export const logUpload = ({ average }: Stats.Upload): void => {
+export const logUpload = (bps: number): void => {
   console.log(
     chalk.bold.magenta("⬆️ Upload:"),
-    `${chalk.green(average.toFixed(2), "Mbps")}`,
+    chalk.green(`${toMbps(bps)} Mbps`),
   );
+};
+
+export const logResults = (results: Results): void => {
+  logLatency(results.getUnloadedLatency());
+  logPacketLoss(results.getPacketLoss());
+  logDownload(results.getDownloadBandwidth());
+  logUpload(results.getUploadBandwidth());
 };

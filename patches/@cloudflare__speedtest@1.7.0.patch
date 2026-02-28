@@ -1,0 +1,9 @@
+diff --git a/dist/speedtest.js b/dist/speedtest.js
+index 57aa7436ce06a17994647b0a2faded04cd431d41..ca604fa8b1f5c642afb336551533d3b682e8c23c 100644
+--- a/dist/speedtest.js
++++ b/dist/speedtest.js
+@@ -1,4 +1,3 @@
+-import 'isomorphic-fetch';
+ import memoize from 'lodash.memoize';
+ import { scaleThreshold } from 'd3-scale';
+ 
