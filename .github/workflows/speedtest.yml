@@ -1,0 +1,26 @@
+name: Speedtest
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        package-manager: [npm, pnpm, yarn, bun]
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: docker compose run --rm ${{ matrix.package-manager }}

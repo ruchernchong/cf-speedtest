@@ -1,0 +1,20 @@
+services:
+  npm:
+    build:
+      context: .
+      target: test-npm
+
+  pnpm:
+    build:
+      context: .
+      target: test-pnpm
+
+  yarn:
+    build:
+      context: .
+      target: test-yarn
+
+  bun:
+    build:
+      context: .
+      target: test-bun
