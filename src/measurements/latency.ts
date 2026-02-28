@@ -1,6 +1,6 @@
 import { jitter, percentile } from "@/utils/stats";
 
-const TRACE_URL = "https://speed.cloudflare.com/api/v1/trace";
+const TRACE_URL = "https://1.1.1.1/cdn-cgi/trace";
 
 async function measurePing(): Promise<number> {
   const start = performance.now();

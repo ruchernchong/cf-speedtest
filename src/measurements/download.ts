@@ -1,19 +1,28 @@
-const DOWNLOAD_URL = "https://speed.cloudflare.com/api/raw";
+import { get } from "node:https";
 
-async function measureDownloadOnce(
+const DOWNLOAD_URL = "https://speed.cloudflare.com/__down";
+
+function measureDownloadOnce(
   bytes: number,
 ): Promise<{ bytes: number; durationMs: number; bps: number }> {
-  const url = `${DOWNLOAD_URL}?bytes=${bytes}&iterations=1&flushIter=true`;
+  const url = `${DOWNLOAD_URL}?bytes=${bytes}`;
 
-  const start = performance.now();
-  const response = await fetch(url);
-  await response.arrayBuffer();
-  const end = performance.now();
+  return new Promise((resolve, reject) => {
+    const start = performance.now();
 
-  const durationMs = end - start;
-  const bps = (bytes * 8) / (durationMs / 1000);
-
-  return { bytes, durationMs, bps };
+    get(url, (res) => {
+      let received = 0;
+      res.on("data", (chunk: Buffer) => {
+        received += chunk.length;
+      });
+      res.on("end", () => {
+        const durationMs = performance.now() - start;
+        const bps = (received * 8) / (durationMs / 1000);
+        resolve({ bytes: received, durationMs, bps });
+      });
+      res.on("error", reject);
+    }).on("error", reject);
+  });
 }
 
 export async function measureDownload(

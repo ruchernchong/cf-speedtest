@@ -17,6 +17,15 @@ pnpm add -g cf-speedtest
 
 # Or run directly with npx
 npx cf-speedtest
+
+# Or run directly with bunx
+bunx cf-speedtest
+
+# Or run directly with pnpm dlx
+pnpm dlx cf-speedtest
+
+# Or run directly with yarn dlx
+yarn dlx cf-speedtest
 ```
 
 ## Building and Running

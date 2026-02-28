@@ -1,4 +1,4 @@
-const UPLOAD_URL = "https://speed.cloudflare.com/api/raw";
+const UPLOAD_URL = "https://speed.cloudflare.com/__up";
 
 async function measureUploadOnce(
   bytes: number,
