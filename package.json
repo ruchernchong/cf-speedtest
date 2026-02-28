@@ -45,9 +45,7 @@
     "prepare": "husky"
   },
   "packageManager": "pnpm@10.30.3",
-  "dependencies": {
-    "@cloudflare/speedtest": "^1.7.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",
     "@commitlint/cli": "^20.4.2",

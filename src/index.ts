@@ -1,37 +1,40 @@
-import SpeedTest from "@cloudflare/speedtest";
-import { logResults } from "@/logger/logger";
+import { logResults } from "@/logger";
+import { measureDownload } from "@/measurements/download";
+import { measureLatency } from "@/measurements/latency";
+import { measureUpload } from "@/measurements/upload";
+import { getServerLocation } from "@/utils/location";
+import { percentile } from "@/utils/stats";
 
-export function runCLI(): Promise<void> {
-  return new Promise((resolve) => {
-    let settled = false;
+const DOWNLOAD_MEASUREMENTS = [
+  { bytes: 1e5, count: 1, bypassMinDuration: true }, // warmup
+  { bytes: 1e5, count: 9 },
+  { bytes: 1e6, count: 8 },
+  { bytes: 1e7, count: 6 },
+  { bytes: 2.5e7, count: 4 },
+  { bytes: 1e8, count: 3 },
+  { bytes: 2.5e8, count: 2 },
+];
 
-    const speedTest = new SpeedTest({
-      measurements: [
-        { type: "latency", numPackets: 1 },
-        { type: "download", bytes: 1e5, count: 1, bypassMinDuration: true },
-        { type: "latency", numPackets: 20 },
-        { type: "download", bytes: 1e5, count: 9 },
-        { type: "download", bytes: 1e6, count: 8 },
-        { type: "upload", bytes: 1e5, count: 8 },
-        { type: "upload", bytes: 1e6, count: 6 },
-        { type: "download", bytes: 1e7, count: 6 },
-        { type: "upload", bytes: 1e7, count: 4 },
-        { type: "download", bytes: 2.5e7, count: 4 },
-        { type: "upload", bytes: 2.5e7, count: 4 },
-        { type: "download", bytes: 1e8, count: 3 },
-        { type: "upload", bytes: 5e7, count: 3 },
-        { type: "download", bytes: 2.5e8, count: 2 },
-      ],
-    });
+const UPLOAD_MEASUREMENTS = [
+  { bytes: 1e5, count: 8 },
+  { bytes: 1e6, count: 6 },
+  { bytes: 1e7, count: 4 },
+  { bytes: 2.5e7, count: 4 },
+  { bytes: 5e7, count: 3 },
+];
 
-    const finish = (results: import("@cloudflare/speedtest").Results) => {
-      if (settled) return;
-      settled = true;
-      logResults(results);
-      resolve();
-    };
+export async function runCLI(): Promise<void> {
+  const location = await getServerLocation();
+  await measureLatency(1); // probe
+  const { latency, jitter } = await measureLatency(20);
+  const downloadSamples = await measureDownload(DOWNLOAD_MEASUREMENTS);
+  const uploadSamples = await measureUpload(UPLOAD_MEASUREMENTS);
 
-    speedTest.onFinish = (results) => finish(results);
-    speedTest.onError = () => finish(speedTest.results);
+  logResults({
+    latency,
+    jitter,
+    download: percentile(downloadSamples, 90),
+    upload: percentile(uploadSamples, 90),
+    serverLocation: location.colo,
   });
 }

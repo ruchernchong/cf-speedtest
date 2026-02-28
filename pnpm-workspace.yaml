@@ -1,2 +1,1 @@
-patchedDependencies:
-  '@cloudflare/speedtest@1.7.0': patches/@cloudflare__speedtest@1.7.0.patch
+{}

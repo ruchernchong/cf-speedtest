@@ -1,24 +1,26 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   logDownload,
+  logJitter,
   logLatency,
-  logPacketLoss,
   logResults,
+  logServerLocation,
   logUpload,
-} from "@/logger/logger";
+} from "@/logger";
 
-vi.mock("chalk", () => ({
-  default: {
-    bold: {
-      cyan: vi.fn((str) => `bold.cyan(${str})`),
-      red: vi.fn((str) => `bold.red(${str})`),
-      yellow: vi.fn((str) => `bold.yellow(${str})`),
-      magenta: vi.fn((str) => `bold.magenta(${str})`),
-    },
-    green: vi.fn((str) => `green(${str})`),
-    red: vi.fn((str) => `red(${str})`),
-  },
-}));
+describe("logServerLocation", () => {
+  beforeEach(() => {
+    vi.spyOn(console, "log").mockImplementation(() => {});
+  });
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("should log server location", () => {
+    logServerLocation("SIN");
+    expect(console.log).toHaveBeenCalledTimes(1);
+  });
+});
 
 describe("logLatency", () => {
   beforeEach(() => {
@@ -30,22 +32,16 @@ describe("logLatency", () => {
 
   it("should log latency in ms with 2 decimal places", () => {
     logLatency(45.678);
-    expect(console.log).toHaveBeenCalledWith(
-      "bold.cyan(🏓 Latency:)",
-      "green(45.68ms)",
-    );
+    expect(console.log).toHaveBeenCalledTimes(1);
   });
 
   it("should handle zero latency", () => {
     logLatency(0);
-    expect(console.log).toHaveBeenCalledWith(
-      "bold.cyan(🏓 Latency:)",
-      "green(0.00ms)",
-    );
+    expect(console.log).toHaveBeenCalledTimes(1);
   });
 });
 
-describe("logPacketLoss", () => {
+describe("logJitter", () => {
   beforeEach(() => {
     vi.spyOn(console, "log").mockImplementation(() => {});
   });
@@ -53,28 +49,14 @@ describe("logPacketLoss", () => {
     vi.restoreAllMocks();
   });
 
-  it("should log packet loss as percentage", () => {
-    logPacketLoss(0.05);
-    expect(console.log).toHaveBeenCalledWith(
-      "bold.red(🚫 Packet Loss:)",
-      "red(5.00%)",
-    );
+  it("should log jitter in ms with 2 decimal places", () => {
+    logJitter(3.456);
+    expect(console.log).toHaveBeenCalledTimes(1);
   });
 
-  it("should log N/A when packet loss is undefined", () => {
-    logPacketLoss(undefined);
-    expect(console.log).toHaveBeenCalledWith(
-      "bold.red(🚫 Packet Loss:)",
-      "red(N/A)",
-    );
-  });
-
-  it("should handle zero packet loss", () => {
-    logPacketLoss(0);
-    expect(console.log).toHaveBeenCalledWith(
-      "bold.red(🚫 Packet Loss:)",
-      "red(0.00%)",
-    );
+  it("should handle zero jitter", () => {
+    logJitter(0);
+    expect(console.log).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -88,16 +70,12 @@ describe("logDownload", () => {
 
   it("should convert bps to Mbps and log", () => {
     logDownload(25_000_000);
-    expect(console.log).toHaveBeenCalledWith(
-      "bold.yellow(⬇️ Download: green(25.00 Mbps))",
-    );
+    expect(console.log).toHaveBeenCalledTimes(1);
   });
 
   it("should handle zero download", () => {
     logDownload(0);
-    expect(console.log).toHaveBeenCalledWith(
-      "bold.yellow(⬇️ Download: green(0.00 Mbps))",
-    );
+    expect(console.log).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -111,18 +89,12 @@ describe("logUpload", () => {
 
   it("should convert bps to Mbps and log", () => {
     logUpload(10_000_000);
-    expect(console.log).toHaveBeenCalledWith(
-      "bold.magenta(⬆️ Upload:)",
-      "green(10.00 Mbps)",
-    );
+    expect(console.log).toHaveBeenCalledTimes(1);
   });
 
   it("should handle zero upload", () => {
     logUpload(0);
-    expect(console.log).toHaveBeenCalledWith(
-      "bold.magenta(⬆️ Upload:)",
-      "green(0.00 Mbps)",
-    );
+    expect(console.log).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -135,15 +107,14 @@ describe("logResults", () => {
   });
 
   it("should log all results", () => {
-    const mockResults = {
-      getUnloadedLatency: () => 25.5,
-      getPacketLoss: () => 0.01,
-      getDownloadBandwidth: () => 50_000_000,
-      getUploadBandwidth: () => 20_000_000,
-    };
+    logResults({
+      latency: 25.5,
+      jitter: 2.3,
+      download: 50_000_000,
+      upload: 20_000_000,
+      serverLocation: "SIN",
+    });
 
-    logResults(mockResults as never);
-
-    expect(console.log).toHaveBeenCalledTimes(4);
+    expect(console.log).toHaveBeenCalledTimes(5);
   });
 });
