@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/ruchernchong/cf-speedtest/compare/v1.0.1...v1.0.2) (2026-02-28)
+
+
+### Bug Fixes
+
+* update Cloudflare API endpoints and add install options ([b7cd877](https://github.com/ruchernchong/cf-speedtest/commit/b7cd87797c04f4860b0d0d608ee45eb8629fde00))
+
 ## [1.0.1](https://github.com/ruchernchong/cf-speedtest/compare/v1.0.0...v1.0.1) (2026-02-28)
 
 
