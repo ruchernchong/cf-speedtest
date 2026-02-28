@@ -9,16 +9,30 @@ speeds.
 
 ## Installation
 
-Install globally via npm:
+Install globally:
 
 ```bash
+# npm
 npm install -g cf-speedtest
+
+# pnpm
+pnpm add -g cf-speedtest
 ```
 
-Or run without installation using npx:
+Or run without installation:
 
 ```bash
+# npx
 npx cf-speedtest
+
+# pnpm dlx
+pnpm dlx cf-speedtest
+
+# bunx
+bunx cf-speedtest
+
+# yarn dlx
+yarn dlx cf-speedtest
 ```
 
 ## Usage
@@ -32,15 +46,11 @@ cf-speedtest
 ### Example Output
 
 ```
-🌐 Server Location:
-City     : Singapore
-Public IP: 139.59.132.30
-
-🏓 Latency: 2.34 ms
-🚫 Packet Loss: 0.00%
-
-📥 Download: 3200.45 Mbps
-📤 Upload: 2800.67 Mbps
+📍 Server Location: SIN
+🏓 Latency: 2.34ms
+📊 Jitter: 0.45ms
+⬇️ Download: 3200.45 Mbps
+⬆️ Upload: 2800.67 Mbps
 ```
 
 ## Building from Source
@@ -52,11 +62,6 @@ pnpm install
 pnpm run build
 node dist/index.js
 ```
-
-## Why am I using TS to write this CLI instead of other language?
-
-Because I am intending to use [cloudflare/speedtest](https://github.com/cloudflare/speedtest) in the future
-once [issue #17](https://github.com/cloudflare/speedtest/issues/17) is resolved.
 
 ## License
 

@@ -69,22 +69,35 @@ This is a TypeScript CLI tool for running Cloudflare speed tests. The project is
 - **src/** - Main source code
   - **cli.ts** - CLI entry point (installed as the `cf-speedtest` executable)
   - **index.ts** - Library entry point that exports the main `runCLI` function
-  - **logger.ts** - Displays speed test results to the console
+  - **measurements/** - Native HTTP measurement modules
+    - **latency.ts** - Measures latency and jitter via HTTP probes
+    - **download.ts** - Measures download throughput
+    - **upload.ts** - Measures upload throughput
+  - **logger/** - Console output formatting
+    - **logger.ts** - Formats and logs speed test results using `styleText`
+    - **index.ts** - Re-exports logger functions
+  - **utils/** - Shared utilities
+    - **location.ts** - Fetches Cloudflare server location (colo code)
+    - **stats.ts** - Statistical helpers (e.g., percentile)
+  - **types/** - TypeScript type definitions
+    - **index.ts** - Shared types (e.g., `SpeedTestResults`)
 
 ## Architecture
 
-The speed test uses `@cloudflare/speedtest` and follows this flow:
+The speed test uses native HTTP requests against Cloudflare's endpoints and follows this flow:
 
-1. **Latency Testing** - Measures unloaded latency and packet loss
-2. **Download Testing** - Downloads files of increasing size to measure throughput
-3. **Upload Testing** - Uploads buffers of increasing size to measure throughput
+1. **Server Location** - Fetches the Cloudflare colo identifier for the connected edge node
+2. **Latency Testing** - Runs HTTP probes to measure round-trip latency and jitter
+3. **Download Testing** - Downloads payloads of increasing size to measure throughput
+4. **Upload Testing** - Uploads payloads of increasing size to measure throughput
+5. **Aggregation** - Reports 90th-percentile download/upload speeds
 
 Results are formatted and displayed to the console using Node.js built-in `styleText`.
 
 ## Key Components
 
 - `runCLI()` - Orchestrates the speed test and logs results on completion
-- `logLatency()`, `logPacketLoss()`, `logDownload()`, `logUpload()`, `logResults()` - Display formatted results to the console
+- `logServerLocation()`, `logLatency()`, `logJitter()`, `logDownload()`, `logUpload()`, `logResults()` - Display formatted results to the console
 
 ## Development Workflows
 
