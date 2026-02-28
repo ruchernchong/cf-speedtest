@@ -60,30 +60,22 @@ This is a TypeScript CLI tool for running Cloudflare speed tests. The project is
 - **src/** - Main source code
   - **cli.ts** - CLI entry point (installed as the `cf-speedtest` executable)
   - **index.ts** - Library entry point that exports the main `runCLI` function
-  - **constants/** - Shared constants like hostnames and file sizes
-  - **logger/** - Modules that handle displaying results to the console
-  - **measurements/** - Core modules for measuring latency, download, and upload speeds
-  - **types/** - TypeScript type definitions for the project
-  - **utils/** - Helper functions for making HTTP requests, calculations, etc.
+  - **logger.ts** - Displays speed test results to the console
 
 ## Architecture
 
-The speed test follows this flow:
+The speed test uses `@cloudflare/speedtest` and follows this flow:
 
-1. **Latency Testing** - Sends multiple HEAD requests to measure ping times and packet loss
-2. **Server Location** - Determines the Cloudflare edge server location being used
-3. **Download Testing** - Downloads a file of specific size and measures the throughput
-4. **Upload Testing** - Uploads a buffer of specific size and measures the throughput
+1. **Latency Testing** - Measures unloaded latency and packet loss
+2. **Download Testing** - Downloads files of increasing size to measure throughput
+3. **Upload Testing** - Uploads buffers of increasing size to measure throughput
 
-All test results are formatted and displayed to the console with colored output (using chalk).
+Results are formatted and displayed to the console using Node.js built-in `styleText`.
 
 ## Key Components
 
-- `measureLatency()` - Performs latency tests against Cloudflare's trace endpoint
-- `measureDownload()` - Tests download speed using Cloudflare's down endpoint
-- `measureUpload()` - Tests upload speed using Cloudflare's up endpoint
-- `measureBandwidth()` - Generic function used by both download and upload tests
-- `logXXX()` functions - Display formatted results to the console
+- `runCLI()` - Orchestrates the speed test and logs results on completion
+- `logLatency()`, `logPacketLoss()`, `logDownload()`, `logUpload()`, `logResults()` - Display formatted results to the console
 
 ## Development Workflows
 
