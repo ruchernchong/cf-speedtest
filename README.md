@@ -46,8 +46,8 @@ Public IP: 139.59.132.30
 ## Building from Source
 
 ```bash
-git clone https://github.com/ruchernchong/cloudflare-speedtest.git
-cd cloudflare-speedtest
+git clone https://github.com/ruchernchong/cf-speedtest.git
+cd cf-speedtest
 pnpm install
 pnpm run build
 node dist/index.js

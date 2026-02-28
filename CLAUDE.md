@@ -31,32 +31,40 @@ pnpm run build
 node dist/index.js
 ```
 
-## Linting and Formatting
-
-The project uses Biome for linting and formatting:
-
-### Using pnpm
+## Testing
 
 ```bash
-# Run linting
-pnpm exec @biomejs/biome lint ./src
+# Run tests once
+pnpm run test
 
-# Run formatting
-pnpm exec @biomejs/biome format ./src --write
+# Run tests in watch mode
+pnpm run test:watch
+```
+
+## Linting and Formatting
+
+The project uses Biome v2 for linting and formatting:
+
+```bash
+# Run linting and formatting checks
+pnpm run lint
+
+# Format files
+pnpm run format
 ```
 
 ## Project Structure
 
 This is a TypeScript CLI tool for running Cloudflare speed tests. The project is structured as follows:
 
-- **src/** - Main source code 
-  - **index.ts** - Entry point that exports the main `runCLI` function
+- **src/** - Main source code
+  - **cli.ts** - CLI entry point (installed as the `cf-speedtest` executable)
+  - **index.ts** - Library entry point that exports the main `runCLI` function
   - **constants/** - Shared constants like hostnames and file sizes
   - **logger/** - Modules that handle displaying results to the console
   - **measurements/** - Core modules for measuring latency, download, and upload speeds
   - **types/** - TypeScript type definitions for the project
   - **utils/** - Helper functions for making HTTP requests, calculations, etc.
-- **bin/** - CLI script that gets installed as the executable
 
 ## Architecture
 
@@ -81,7 +89,9 @@ All test results are formatted and displayed to the console with colored output 
 
 The project uses:
 - TypeScript for type safety
-- Biome for linting and formatting
-- Changesets for versioning and release management
+- Biome v2 for linting and formatting
+- semantic-release for versioning and release management
 - pnpm as the package manager
 - tsup for bundling the TypeScript code
+- Vitest for testing
+- Husky + commitlint + lint-staged for git hooks and commit message enforcement
