@@ -1,8 +1,8 @@
 import SpeedTest from "@cloudflare/speedtest";
 import { logResults } from "@/logger/logger";
 
-export const runCLI = (): Promise<void> =>
-  new Promise((resolve) => {
+export function runCLI(): Promise<void> {
+  return new Promise((resolve) => {
     let settled = false;
 
     const speedTest = new SpeedTest({
@@ -34,3 +34,4 @@ export const runCLI = (): Promise<void> =>
     speedTest.onFinish = (results) => finish(results);
     speedTest.onError = () => finish(speedTest.results);
   });
+}
