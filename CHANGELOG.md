@@ -1,3 +1,21 @@
+# [1.0.0](https://github.com/ruchernchong/cf-speedtest/compare/v0.2.4...v1.0.0) (2026-02-28)
+
+
+* feat!: replace manual speed test with @cloudflare/speedtest ([62a31e6](https://github.com/ruchernchong/cf-speedtest/commit/62a31e695ceccdbe7c0dc4412d1e29882446f112))
+
+
+### BREAKING CHANGES
+
+* Exported types (Stats, Metadata,
+ServerLocation) removed. Re-exports Results from
+@cloudflare/speedtest instead.
+
+- Patch @cloudflare/speedtest to remove isomorphic-fetch,
+  enabling Node.js compatibility via native fetch
+- Skip packet loss (requires WebRTC, unavailable in Node)
+- Gracefully handle connection errors with partial results
+- Remove measurement, utility, and constant modules
+
 # cf-speedtest
 
 ## 0.2.4

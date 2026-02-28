@@ -1,6 +1,6 @@
 {
   "name": "cf-speedtest",
-  "version": "0.2.4",
+  "version": "1.0.0",
   "description": "CLI tool for testing internet speed using Cloudflare's network",
   "keywords": [
     "speedtest",
