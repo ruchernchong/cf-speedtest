@@ -1,20 +1,7 @@
 services:
-  npm:
+  cf-speedtest:
     build:
       context: .
-      target: test-npm
-
-  pnpm:
-    build:
-      context: .
-      target: test-pnpm
-
-  yarn:
-    build:
-      context: .
-      target: test-yarn
-
-  bun:
-    build:
-      context: .
-      target: test-bun
+      args:
+        VERSION: ${VERSION:-latest}
+        TARGETARCH: ${TARGETARCH:-amd64}

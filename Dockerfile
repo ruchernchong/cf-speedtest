@@ -1,17 +1,18 @@
-FROM node:22-alpine AS test-npm
-USER node
-ENTRYPOINT ["npx", "--yes", "cf-speedtest"]
+FROM alpine:3.21
 
-FROM node:22-alpine AS test-pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
-USER node
-ENTRYPOINT ["pnpm", "dlx", "cf-speedtest"]
+RUN apk add --no-cache ca-certificates curl tar
 
-FROM node:22-alpine AS test-yarn
-RUN corepack enable
-USER node
-ENTRYPOINT ["yarn", "dlx", "cf-speedtest"]
+ARG TARGETARCH=amd64
+ARG VERSION=latest
 
-FROM oven/bun:alpine AS test-bun
-USER bun
-ENTRYPOINT ["bunx", "cf-speedtest"]
+RUN set -eux; \
+  if [ "$VERSION" = "latest" ]; then \
+    url="https://github.com/ruchernchong/cf-speedtest/releases/latest/download/cf-speedtest_linux_${TARGETARCH}.tar.gz"; \
+  else \
+    url="https://github.com/ruchernchong/cf-speedtest/releases/download/${VERSION}/cf-speedtest_linux_${TARGETARCH}.tar.gz"; \
+  fi; \
+  curl -fsSL "$url" | tar -xz -C /usr/local/bin; \
+  chmod +x /usr/local/bin/cf-speedtest; \
+  apk del curl tar
+
+ENTRYPOINT ["cf-speedtest"]

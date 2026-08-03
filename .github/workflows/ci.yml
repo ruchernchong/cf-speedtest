@@ -14,26 +14,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        command: [lint, test, build]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "lts/*"
-          cache: "pnpm"
-
-      - run: pnpm install --frozen-lockfile
-
-      - run: pnpm ${{ matrix.command }}
-
   go:
     runs-on: ubuntu-latest
     steps:
