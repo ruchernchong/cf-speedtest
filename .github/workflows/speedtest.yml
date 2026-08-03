@@ -21,9 +21,10 @@ jobs:
         run: |
           gh release download "${{ github.event.release.tag_name }}" \
             --repo "${{ github.repository }}" \
-            --pattern "cf-speedtest_linux_amd64.tar.gz" \
+            --pattern "cf-speedtest_*_linux_amd64.tar.gz" \
             --dir /tmp
-          tar -xzf /tmp/cf-speedtest_linux_amd64.tar.gz -C /tmp
+          archive=$(ls /tmp/cf-speedtest_*_linux_amd64.tar.gz)
+          tar -xzf "$archive" -C /tmp
           chmod +x /tmp/cf-speedtest
 
       - name: Run speedtest
