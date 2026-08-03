@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+
+	"github.com/ruchernchong/cf-speedtest/internal/speedtest"
+)
 
 func main() {
-	fmt.Println("cf-speedtest: Go rewrite in progress")
+	if err := speedtest.Run(nil); err != nil {
+		fmt.Fprintf(os.Stderr, "cf-speedtest: %v\n", err)
+		os.Exit(1)
+	}
 }
