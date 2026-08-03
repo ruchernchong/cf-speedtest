@@ -11,7 +11,7 @@ RUN set -eux; \
   else \
     url="https://github.com/ruchernchong/cf-speedtest/releases/download/${VERSION}/cf-speedtest_linux_${TARGETARCH}.tar.gz"; \
   fi; \
-  curl -fsSL "$url" | tar -xz -C /usr/local/bin; \
+  curl -fsSL "$url" | tar -xz -C /usr/local/bin cf-speedtest; \
   chmod +x /usr/local/bin/cf-speedtest; \
   apk del curl tar
 
