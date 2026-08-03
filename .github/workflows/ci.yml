@@ -43,8 +43,8 @@ jobs:
         with:
           go-version-file: go.mod
 
-      - run: go test ./...
-
       - run: go vet ./...
+
+      - run: go test ./...
 
       - run: go build -o /dev/null ./cmd/cf-speedtest
