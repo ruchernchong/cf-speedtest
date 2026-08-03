@@ -49,6 +49,9 @@ func TestLogResults(t *testing.T) {
 	if !strings.Contains(out, "25.50ms") {
 		t.Fatalf("missing latency: %s", out)
 	}
+	if !strings.Contains(out, "2.30ms") {
+		t.Fatalf("missing jitter: %s", out)
+	}
 	if !strings.Contains(out, "50.00 Mbps") {
 		t.Fatalf("missing download: %s", out)
 	}
