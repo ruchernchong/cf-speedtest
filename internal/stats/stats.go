@@ -4,6 +4,11 @@ import "sort"
 
 // Percentile returns the p-th percentile of values (0-100) using sorted interpolation.
 func Percentile(values []float64, p float64) float64 {
+	if p < 0 {
+		p = 0
+	} else if p > 100 {
+		p = 100
+	}
 	n := len(values)
 	if n == 0 {
 		return 0
