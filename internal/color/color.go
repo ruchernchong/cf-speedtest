@@ -15,13 +15,15 @@ const (
 	magenta = "\033[35m"
 )
 
-func enabled() bool {
+var colorEnabled = sync.OnceValue(func() bool {
 	fi, err := os.Stdout.Stat()
 	if err != nil {
 		return false
 	}
 	return (fi.Mode() & os.ModeCharDevice) != 0
-}
+})
+
+func enabled() bool { return colorEnabled() }
 
 func wrap(codes, s string) string {
 	if !enabled() {
