@@ -62,3 +62,18 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Invoked directly because release:published from GITHUB_TOKEN does not
+  # start other workflows (see docs.github.com GITHUB_TOKEN triggering).
+  smoke:
+    name: Smoke
+    needs: [release-please, goreleaser]
+    if: |
+      always() &&
+      !cancelled() &&
+      needs.goreleaser.result == 'success'
+    uses: ./.github/workflows/smoke.yml
+    with:
+      tag: ${{ inputs.tag || needs.release-please.outputs.tag_name }}
+    permissions:
+      contents: read

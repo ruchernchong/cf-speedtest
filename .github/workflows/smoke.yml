@@ -1,14 +1,28 @@
 name: Smoke
 
 on:
+  # Human-published releases (UI/API with a PAT). Releases published by
+  # GITHUB_TOKEN in the Release workflow do not trigger this event.
   release:
     types: [published]
+  workflow_call:
+    inputs:
+      tag:
+        description: Release tag to smoke-test
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to smoke-test
+        required: true
+        type: string
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ inputs.tag || github.event.release.tag_name || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -17,7 +31,7 @@ jobs:
     steps:
       - name: Download release binary
         env:
-          TAG: ${{ github.event.release.tag_name }}
+          TAG: ${{ inputs.tag || github.event.release.tag_name }}
           REPO: ${{ github.repository }}
         run: |
           asset_url=$(curl -fsSL --proto '=https' --proto-redir '=https' \
