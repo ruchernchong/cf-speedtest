@@ -14,22 +14,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
+  go:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        command: [lint, test, build]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
 
-      - uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
-
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff  # v5.6.0
         with:
-          node-version: "lts/*"
-          cache: "pnpm"
+          go-version-file: go.mod
 
-      - run: pnpm install --frozen-lockfile
+      - run: go vet ./...
 
-      - run: pnpm ${{ matrix.command }}
+      - run: go test ./...
+
+      - run: go build -o /dev/null ./cmd/cf-speedtest

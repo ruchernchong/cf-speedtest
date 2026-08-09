@@ -137,3 +137,15 @@ dist
 
 # Claude Code
 .claude
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+/cf-speedtest
+coverage.out
+bin/

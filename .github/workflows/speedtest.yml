@@ -1,9 +1,8 @@
 name: Speedtest
 
 on:
-  workflow_run:
-    workflows: ["Release"]
-    types: [completed]
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -13,14 +12,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+  smoke:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        package-manager: [npm, pnpm, yarn, bun]
     steps:
-      - uses: actions/checkout@v4
+      - name: Download release binary
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          asset_url=$(curl -fsSL --proto '=https' --proto-redir '=https' \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${REPO}/releases/tags/${TAG}" \
+            | jq -r '.assets[] | select(.name | test("^cf-speedtest_.*_linux_amd64\\.tar\\.gz$")) | .url')
+          curl -fsSL --proto '=https' --proto-redir '=https' \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/octet-stream" \
+            -o /tmp/cf-speedtest_linux_amd64.tar.gz \
+            "$asset_url"
+          tar -xzf /tmp/cf-speedtest_linux_amd64.tar.gz -C /tmp
+          chmod +x /tmp/cf-speedtest
 
-      - run: docker compose run --rm ${{ matrix.package-manager }}
+      - name: Run speedtest
+        run: /tmp/cf-speedtest
