@@ -24,14 +24,14 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${REPO}/releases/tags/${TAG}" \
-            | jq -r '.assets[] | select(.name | test("^cf-speedtest_.*_linux_amd64\\.tar\\.gz$")) | .url')
+            | jq -r '.assets[] | select(.name | test("^cfspeed_.*_linux_amd64\\.tar\\.gz$")) | .url')
           curl -fsSL --proto '=https' --proto-redir '=https' \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/octet-stream" \
-            -o /tmp/cf-speedtest_linux_amd64.tar.gz \
+            -o /tmp/cfspeed_linux_amd64.tar.gz \
             "$asset_url"
-          tar -xzf /tmp/cf-speedtest_linux_amd64.tar.gz -C /tmp
-          chmod +x /tmp/cf-speedtest
+          tar -xzf /tmp/cfspeed_linux_amd64.tar.gz -C /tmp
+          chmod +x /tmp/cfspeed
 
       - name: Run speedtest
-        run: /tmp/cf-speedtest
+        run: /tmp/cfspeed

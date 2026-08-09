@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ruchernchong/cf-speedtest/internal/schedule"
+	"github.com/ruchernchong/cfspeed/internal/schedule"
 )
 
 func TestMeasureOnceBPS(t *testing.T) {

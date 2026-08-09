@@ -146,6 +146,6 @@ dist
 *.dylib
 *.test
 *.out
-/cf-speedtest
+/cfspeed
 coverage.out
 bin/

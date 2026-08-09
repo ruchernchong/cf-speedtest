@@ -1,4 +1,4 @@
-# cf-speedtest
+# cfspeed
 
 A simple CLI tool to measure your Cloudflare network performance, including latency, download, and upload speeds.
 
@@ -10,20 +10,20 @@ A simple CLI tool to measure your Cloudflare network performance, including late
 
 ### Prebuilt binaries
 
-Download the latest release for your platform from [GitHub Releases](https://github.com/ruchernchong/cf-speedtest/releases).
+Download the latest release for your platform from [GitHub Releases](https://github.com/ruchernchong/cfspeed/releases).
 
 ### Go install
 
 ```bash
-go install github.com/ruchernchong/cf-speedtest/cmd/cf-speedtest@latest
+go install github.com/ruchernchong/cfspeed/cmd/cfspeed@latest
 ```
 
-> **Note:** The npm package `cf-speedtest` is deprecated. Use GitHub Releases or `go install` instead.
+> **Note:** The npm package `cf-speedtest` (old name) is deprecated. Use GitHub Releases or `go install` instead.
 
 ## Usage
 
 ```bash
-cf-speedtest
+cfspeed
 ```
 
 ### Example Output
@@ -39,10 +39,10 @@ cf-speedtest
 ## Building from Source
 
 ```bash
-git clone https://github.com/ruchernchong/cf-speedtest.git
-cd cf-speedtest
-go build -o cf-speedtest ./cmd/cf-speedtest
-./cf-speedtest
+git clone https://github.com/ruchernchong/cfspeed.git
+cd cfspeed
+go build -o cfspeed ./cmd/cfspeed
+./cfspeed
 ```
 
 ## License

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ruchernchong/cf-speedtest/internal/schedule"
+	"github.com/ruchernchong/cfspeed/internal/schedule"
 )
 
 const uploadURL = "https://speed.cloudflare.com/__up"

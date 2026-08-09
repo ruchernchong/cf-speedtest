@@ -1,6 +1,6 @@
 version: 2
 
-project_name: cf-speedtest
+project_name: cfspeed
 
 before:
   hooks:
@@ -9,9 +9,9 @@ before:
     - go test ./...
 
 builds:
-  - id: cf-speedtest
-    main: ./cmd/cf-speedtest
-    binary: cf-speedtest
+  - id: cfspeed
+    main: ./cmd/cfspeed
+    binary: cfspeed
     env:
       - CGO_ENABLED=0
     goos:
@@ -45,7 +45,7 @@ changelog:
 release:
   github:
     owner: ruchernchong
-    name: cf-speedtest
+    name: cfspeed
   # Release Please creates a draft (mutable) release; adopt it, upload
   # binaries, then publish. Published GitHub releases are immutable, so
   # assets cannot be attached afterward.

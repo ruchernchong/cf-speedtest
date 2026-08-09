@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Install from source
-go install github.com/ruchernchong/cf-speedtest/cmd/cf-speedtest@latest
+go install github.com/ruchernchong/cfspeed/cmd/cfspeed@latest
 
 # Or download a release binary from GitHub Releases
 ```
@@ -27,10 +27,10 @@ go test ./...
 go vet ./...
 
 # Build the CLI
-go build -o cf-speedtest ./cmd/cf-speedtest
+go build -o cfspeed ./cmd/cfspeed
 
 # Run locally
-go run ./cmd/cf-speedtest
+go run ./cmd/cfspeed
 ```
 
 ## Testing
@@ -44,7 +44,7 @@ go test ./... -count=1
 
 This is a Go CLI tool for running Cloudflare speed tests. The project is structured as follows:
 
-- **cmd/cf-speedtest/** - CLI entry point
+- **cmd/cfspeed/** - CLI entry point
 - **internal/** - Private application packages
   - **speedtest/** - Orchestrator (`Run`) matching former `runCLI()` order
   - **location/** - Fetches Cloudflare server location (colo code) via `cdn-cgi/trace`

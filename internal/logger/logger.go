@@ -3,8 +3,8 @@ package logger
 import (
 	"fmt"
 
-	"github.com/ruchernchong/cf-speedtest/internal/color"
-	"github.com/ruchernchong/cf-speedtest/internal/result"
+	"github.com/ruchernchong/cfspeed/internal/color"
+	"github.com/ruchernchong/cfspeed/internal/result"
 )
 
 func toMbps(bps float64) string {

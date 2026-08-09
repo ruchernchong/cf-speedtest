@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ruchernchong/cf-speedtest/internal/speedtest"
+	"github.com/ruchernchong/cfspeed/internal/speedtest"
 )
 
 func main() {
 	if err := speedtest.Run(nil); err != nil {
-		fmt.Fprintf(os.Stderr, "cf-speedtest: %v\n", err)
+		fmt.Fprintf(os.Stderr, "cfspeed: %v\n", err)
 		os.Exit(1)
 	}
 }
