@@ -5,6 +5,13 @@
 
 * **docker:** run containers as non-root user ([ad0472b](https://github.com/ruchernchong/cf-speedtest/commit/ad0472be3f6d5527cd409d9f6c5b4ee390b8145e))
 
+## [2.0.2](https://github.com/ruchernchong/cfspeed/compare/v2.0.1...v2.0.2) (2026-08-09)
+
+
+### Bug Fixes
+
+* use /v2 module path so go install [@latest](https://github.com/latest) works ([a930161](https://github.com/ruchernchong/cfspeed/commit/a930161ecf97ce12fa1b3379f9d97aa61888196c))
+
 ## [2.0.1](https://github.com/ruchernchong/cf-speedtest/compare/v2.0.0...v2.0.1) (2026-08-09)
 
 
