@@ -1,6 +1,9 @@
 package stats
 
-import "sort"
+import (
+	"math"
+	"sort"
+)
 
 // Percentile returns the p-th percentile of values (0-100) using sorted interpolation.
 func Percentile(values []float64, p float64) float64 {
