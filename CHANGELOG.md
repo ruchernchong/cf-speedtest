@@ -5,6 +5,13 @@
 
 * **docker:** run containers as non-root user ([ad0472b](https://github.com/ruchernchong/cf-speedtest/commit/ad0472be3f6d5527cd409d9f6c5b4ee390b8145e))
 
+## [2.0.1](https://github.com/ruchernchong/cf-speedtest/compare/v2.0.0...v2.0.1) (2026-08-09)
+
+
+### Bug Fixes
+
+* publish prebuilt binaries after empty v2.0.0 release ([0a79d5f](https://github.com/ruchernchong/cf-speedtest/commit/0a79d5f4b737d648db3500994566a9e8307dca4b))
+
 ## [2.0.0](https://github.com/ruchernchong/cf-speedtest/compare/v1.0.3...v2.0.0) (2026-08-09)
 
 
