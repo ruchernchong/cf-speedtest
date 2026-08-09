@@ -46,3 +46,8 @@ release:
   github:
     owner: ruchernchong
     name: cf-speedtest
+  # Release Please creates a draft (mutable) release; adopt it, upload
+  # binaries, then publish. Published GitHub releases are immutable, so
+  # assets cannot be attached afterward.
+  use_existing_draft: true
+  mode: keep-existing
