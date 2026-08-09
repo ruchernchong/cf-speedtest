@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const TraceURL = "https://1.1.1.1/cdn-cgi/trace"
+const TraceURL = "https://speed.cloudflare.com/cdn-cgi/trace"
 
 // ServerLocation holds Cloudflare edge location fields from cdn-cgi/trace.
 type ServerLocation struct {
