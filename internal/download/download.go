@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ruchernchong/cfspeed/internal/schedule"
+	"github.com/ruchernchong/cfspeed/v2/internal/schedule"
 )
 
 const downloadURL = "https://speed.cloudflare.com/__down"

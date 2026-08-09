@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ruchernchong/cfspeed/internal/location"
-	"github.com/ruchernchong/cfspeed/internal/stats"
+	"github.com/ruchernchong/cfspeed/v2/internal/location"
+	"github.com/ruchernchong/cfspeed/v2/internal/stats"
 )
 
 // Result holds median latency and jitter in milliseconds.

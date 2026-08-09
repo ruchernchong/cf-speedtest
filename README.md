@@ -15,10 +15,10 @@ Download the latest release for your platform from [GitHub Releases](https://git
 ### Go install
 
 ```bash
-go install github.com/ruchernchong/cfspeed/cmd/cfspeed@latest
+go install github.com/ruchernchong/cfspeed/v2/cmd/cfspeed@latest
 ```
 
-> **Note:** The npm package `cf-speedtest` (old name) is deprecated. Use GitHub Releases or `go install` instead.
+> **Note:** Major version 2+ requires the `/v2` import path (Go modules). The npm package `cf-speedtest` (old name) is deprecated — use GitHub Releases or `go install` instead.
 
 ## Usage
 
