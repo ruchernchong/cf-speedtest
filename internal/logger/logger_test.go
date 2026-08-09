@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ruchernchong/cfspeed/internal/result"
+	"github.com/ruchernchong/cfspeed/v2/internal/result"
 )
 
 func captureStdout(t *testing.T, fn func()) string {

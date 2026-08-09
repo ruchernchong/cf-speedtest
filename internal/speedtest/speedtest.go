@@ -5,14 +5,14 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ruchernchong/cfspeed/internal/download"
-	"github.com/ruchernchong/cfspeed/internal/latency"
-	"github.com/ruchernchong/cfspeed/internal/location"
-	"github.com/ruchernchong/cfspeed/internal/logger"
-	"github.com/ruchernchong/cfspeed/internal/result"
-	"github.com/ruchernchong/cfspeed/internal/schedule"
-	"github.com/ruchernchong/cfspeed/internal/stats"
-	"github.com/ruchernchong/cfspeed/internal/upload"
+	"github.com/ruchernchong/cfspeed/v2/internal/download"
+	"github.com/ruchernchong/cfspeed/v2/internal/latency"
+	"github.com/ruchernchong/cfspeed/v2/internal/location"
+	"github.com/ruchernchong/cfspeed/v2/internal/logger"
+	"github.com/ruchernchong/cfspeed/v2/internal/result"
+	"github.com/ruchernchong/cfspeed/v2/internal/schedule"
+	"github.com/ruchernchong/cfspeed/v2/internal/stats"
+	"github.com/ruchernchong/cfspeed/v2/internal/upload"
 )
 
 // DefaultClient is the HTTP client used for measurements (timeouts vs TS).

@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Install from source
-go install github.com/ruchernchong/cfspeed/cmd/cfspeed@latest
+go install github.com/ruchernchong/cfspeed/v2/cmd/cfspeed@latest
 
 # Or download a release binary from GitHub Releases
 ```

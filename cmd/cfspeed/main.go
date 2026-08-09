@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ruchernchong/cfspeed/internal/speedtest"
+	"github.com/ruchernchong/cfspeed/v2/internal/speedtest"
 )
 
 func main() {
