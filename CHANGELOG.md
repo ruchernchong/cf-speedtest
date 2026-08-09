@@ -5,6 +5,24 @@
 
 * **docker:** run containers as non-root user ([ad0472b](https://github.com/ruchernchong/cf-speedtest/commit/ad0472be3f6d5527cd409d9f6c5b4ee390b8145e))
 
+## [2.0.0](https://github.com/ruchernchong/cf-speedtest/compare/v1.0.3...v2.0.0) (2026-08-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove Node/npm packaging and switch CI to Go-only
+
+### Features
+
+* remove Node/npm packaging and switch CI to Go-only ([57db909](https://github.com/ruchernchong/cf-speedtest/commit/57db90921a09dfb51eeaa011593bd0abf84a9532))
+
+
+### Bug Fixes
+
+* import math for Jitter absolute delta ([72c84ec](https://github.com/ruchernchong/cf-speedtest/commit/72c84ec64e820af955648090d0a69fa6f1b253f6))
+* import sync for color OnceValue detection ([23fe797](https://github.com/ruchernchong/cf-speedtest/commit/23fe797f620b50c199491596d1df1014c133ce67))
+* use hostname for Cloudflare trace URL ([2e89dc2](https://github.com/ruchernchong/cf-speedtest/commit/2e89dc23c76706be81fd3a5207d032cf6dd12d7f))
+
 ## [1.0.2](https://github.com/ruchernchong/cf-speedtest/compare/v1.0.1...v1.0.2) (2026-02-28)
 
 
