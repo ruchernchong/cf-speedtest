@@ -3,6 +3,7 @@ package color
 import (
 	"fmt"
 	"os"
+	"sync"
 )
 
 const (
