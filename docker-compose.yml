@@ -1,7 +1,0 @@
-services:
-  cf-speedtest:
-    build:
-      context: .
-      args:
-        VERSION: ${VERSION:-latest}
-        TARGETARCH: ${TARGETARCH:-amd64}
