@@ -5,6 +5,31 @@
 
 * **docker:** run containers as non-root user ([ad0472b](https://github.com/ruchernchong/cf-speedtest/commit/ad0472be3f6d5527cd409d9f6c5b4ee390b8145e))
 
+## [2.0.1](https://github.com/ruchernchong/cfspeed/compare/v2.0.1...v2.0.1) (2026-08-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove Node/npm packaging and switch CI to Go-only
+* Exported types (Stats, Metadata, ServerLocation) removed. Re-exports Results from @cloudflare/speedtest instead.
+
+### Features
+
+* remove Node/npm packaging and switch CI to Go-only ([57db909](https://github.com/ruchernchong/cfspeed/commit/57db90921a09dfb51eeaa011593bd0abf84a9532))
+* replace manual speed test with @cloudflare/speedtest ([62a31e6](https://github.com/ruchernchong/cfspeed/commit/62a31e695ceccdbe7c0dc4412d1e29882446f112))
+
+
+### Bug Fixes
+
+* **docker:** run containers as non-root user ([ad0472b](https://github.com/ruchernchong/cfspeed/commit/ad0472be3f6d5527cd409d9f6c5b4ee390b8145e))
+* import math for Jitter absolute delta ([72c84ec](https://github.com/ruchernchong/cfspeed/commit/72c84ec64e820af955648090d0a69fa6f1b253f6))
+* import sync for color OnceValue detection ([23fe797](https://github.com/ruchernchong/cfspeed/commit/23fe797f620b50c199491596d1df1014c133ce67))
+* publish prebuilt binaries after empty v2.0.0 release ([0a79d5f](https://github.com/ruchernchong/cfspeed/commit/0a79d5f4b737d648db3500994566a9e8307dca4b))
+* suppress transferSize errors from @cloudflare/speedtest in Node.js ([3e67222](https://github.com/ruchernchong/cfspeed/commit/3e67222c2acfa9aafa9f93a58df84a1f8d6a60e8))
+* update Cloudflare API endpoints and add install options ([b7cd877](https://github.com/ruchernchong/cfspeed/commit/b7cd87797c04f4860b0d0d608ee45eb8629fde00))
+* use /v2 module path so go install [@latest](https://github.com/latest) works ([a930161](https://github.com/ruchernchong/cfspeed/commit/a930161ecf97ce12fa1b3379f9d97aa61888196c))
+* use hostname for Cloudflare trace URL ([2e89dc2](https://github.com/ruchernchong/cfspeed/commit/2e89dc23c76706be81fd3a5207d032cf6dd12d7f))
+
 ## [2.0.1](https://github.com/ruchernchong/cf-speedtest/compare/v2.0.0...v2.0.1) (2026-08-09)
 
 
